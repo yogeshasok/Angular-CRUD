@@ -1,0 +1,122 @@
+<html ng-app>
+    <head>
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+        <script src="controllers/controller.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#upb').hide();
+        })
+    </script>
+    </head>
+    <body>
+    <div ui-view></div>
+        <div class="container" ng-controller="A">
+            <div class="table-responsive">
+                        <table class="table  table-striped table-bordered table-hover" id="tbl">
+                            <thead>
+                            <tr >
+                                <td colspan="3" >
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse1">Add New</a>
+                                    </h4>
+                                    <div id="collapse1"   class="panel-collapse collapse">
+                                        <form >
+                                            <div class="form-group" id="dat2">
+                                                <label>ProgramName: </label>
+                                                <input type="text" class="form-control" id="pro_name" placeholder="Enter Program Name" ng-model="meet.name" name="pro_name">
+
+
+                                                <label>Date: </label>
+                                                <input type="date" class="form-control" id="pro_date"  name="pro_date" ng-model="meet.date">
+
+                                                <label>Place: </label>
+                                                <input type="text" class="form-control" id="pro_place"  name="pro_place" ng-model="meet.place">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea class="form-control" rows="5" id="pro_des"  name="pro_des" ng-model="meet.des"></textarea>
+                                            </div>
+                                    <button type="button" class="btn btn-default btn-sm" id="addb"  ng-click="addMeet()">
+
+                                        <span class="glyphicon glyphicon-plus"></span> Add Program
+                                    </button>
+                                            <button type="button" class="btn btn-default btn-sm" id="upb" ng-click="update()">
+
+                                                <span class="glyphicon glyphicon-pencil"></span> update
+                                            </button>
+                                            <button type="button" class="btn btn-default btn-sm" onclick="document.getElementById('addb').style.display='inline';document.getElementById('upb').style.display='none'"   ng-click="clear()">
+
+                                                <span class="glyphicon glyphicon-pencil"></span> clear
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr >
+                                <th>Program Name</th>
+                                <th >Date</th>
+                                <th >Location</th>
+                            </tr>
+
+                            </thead>
+                                <tbody>
+                                <tr id="hov" ng-repeat="meet in meetingList" >
+                            <td id="name">
+                               {{meet.name}}
+                            </td>
+                                    <td>
+                                        {{meet.date}}
+                                    </td>
+                            <td id="number">
+                                {{meet.place}}
+                                <div id="edit">
+                                    <button type="button" class="btn btn-default btn-sm" ng-model="detail" data-toggle="collapse" href="#collapse2"ng-click="show(meet._id)">
+                                        <span class="glyphicon glyphicon-folder-open"></span> Details
+                                    </button>
+                                <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" href="#collapse1"  onclick="document.getElementById('addb').style.display='none';document.getElementById('upb').style.display='inline';"  ng-click="edit(meet._id)">
+                                    <span class="glyphicon glyphicon-edit" ng-model="up"></span> Edit
+                                </button>
+                                    <button type="button" class="btn btn-default btn-sm" ng-click="delete(meet._id)">
+                                        <span class="glyphicon glyphicon-trash"></span> Delete
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                                </tbody>
+                        </table>
+                        </div>
+                    </tr>
+                </table>
+
+                <div class="panel-collapse collapse panel-primary" id="collapse2">
+                    <div class="panel-heading">
+                        Meeting
+                    </div>
+                    <div class="panel-body">
+                        <b>Meeting Name:</b>
+                        {{meet1.name}}<br>
+                        <b>Meeting Date:</b>
+                        {{meet1.date}}<br>
+                        <b>Meeting Location</b>
+                        {{meet1.place}}<br>
+                        <b>Description:</b>
+                        {{meet1.des}}<br>
+                    </div>
+
+            </div>
+            </div>
+
+
+
+
+
+
+    </body>
+</html>

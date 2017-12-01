@@ -1,0 +1,29 @@
+#tbl{
+    margin-top: 100px;
+}
+td#number {
+    background-color: papayawhip;
+    width: 60%;
+}
+td#name {
+    background-color: beige;
+}
+tr#hov:hover {
+    z-index: 50;
+    color: blue;
+    font-weight: bold;
+}
+div#edit {
+    float: right;
+}
+tr#hd {
+    border-style: hidden;
+}
+
+div#dat2 {
+    max-width: fit-content;
+    display: inline-flex;
+    text-indent: 40px;
+    margin-top: 15px;
+
+}
